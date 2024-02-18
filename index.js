@@ -1,6 +1,6 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-
 
 const app = express();
 
@@ -11,6 +11,14 @@ app.get("/", (req, res) => {
 });
 
 // LETS START ROUTING HERE AND WILL START MVC
+
+// connecting mongoose to mongodbatlas
+const uri = process.env.MONGODB_CONNECT;
+mongoose.connect(uri, {
+  // useNewUrlParser: true,
+  // useCreateIndex: true,
+  // useUnifiedTopology: true,
+});
 
 // adding the routes to this app
 

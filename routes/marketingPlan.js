@@ -1,8 +1,14 @@
 const marketRouter = require("express").Router();
 const Boards = require("../models/marketing");
 
-marketRouter.get("/", (req, res) => {
-  res.send("THSI WORKS");
+marketRouter.get("/", async (req, res) => {
+  try {
+    await res.status(200).json({
+      mkp: res
+    })
+  } catch (error) {
+    
+  }
 });
 
 marketRouter.post("/marketing-plan", async (req, res) => {
