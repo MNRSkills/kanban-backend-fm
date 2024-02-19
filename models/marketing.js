@@ -17,7 +17,7 @@ const kanbanSchema = new Schema({
               subtasks: [
                 {
                   title: { type: String },
-                  isComplicated: Boolean,
+                  isCompleted: Boolean,
                 },
               ],
             },

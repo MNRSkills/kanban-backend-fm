@@ -14,11 +14,7 @@ app.get("/", (req, res) => {
 
 // connecting mongoose to mongodbatlas
 const uri = process.env.MONGODB_CONNECT;
-mongoose.connect(uri, {
-  // useNewUrlParser: true,
-  // useCreateIndex: true,
-  // useUnifiedTopology: true,
-});
+mongoose.connect(uri, );
 
 // adding the routes to this app
 
