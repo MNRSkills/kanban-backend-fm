@@ -2,7 +2,19 @@ const marketRouter = require("express").Router();
 const Boards = require("../models/marketing");
 
 marketRouter.get("/", async (req, res) => {
-  res.send("This is working")
+  try {
+    await Boards.find().then((board) => {
+      res.status(200).json({
+        Boards: board,
+        msg: "This is what we have",
+      });
+    });
+  } catch (error) {
+    res.status(400).json({
+      msg: "there has been an error",
+      ERROR: error,
+    });
+  }
   // try {
   //   await res.status(200).json({
   //     mkp: res,
@@ -11,18 +23,29 @@ marketRouter.get("/", async (req, res) => {
 });
 
 marketRouter.post("/marketing-post", async (req, res) => {
+  console.log(req.body);
+  //jkjk
   try {
     const marketPlan = await new Boards({
-      name: req.params.name,
-      tasks: [
+      boards: [
         {
-          title: req.params.title,
-          description: req.params.description,
-          status: req.params.status,
-          subtasks: [
+          name: req.body.name,
+          column: [
             {
-              title: req.params.title,
-              isCompleted: req.params.isCompleted,
+              name: req.body.name,
+              tasks: [
+                {
+                  title: req.body.title,
+                  description: req.body.description,
+                  status: req.body.status,
+                  subtasks: [
+                    {
+                      title: req.body.title,
+                      isCompleted: req.body.isCompleted,
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },

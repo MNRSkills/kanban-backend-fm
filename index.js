@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = express.json();
 
 const app = express();
 
@@ -14,12 +15,12 @@ app.get("/", (req, res) => {
 
 // connecting mongoose to mongodbatlas
 const uri = process.env.MONGODB_CONNECT;
-mongoose.connect(uri, );
+mongoose.connect(uri);
 
 // adding the routes to this app
 
 const marketRouter = require("./routes/marketingPlan");
-
+app.use(bodyParser);
 app.use("/marketing-plan", marketRouter);
 // app.use("/platform-launch");
 // app.use("/Roadmap");
