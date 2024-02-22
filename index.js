@@ -20,9 +20,12 @@ mongoose.connect(uri);
 // adding the routes to this app
 
 const marketRouter = require("./routes/marketingPlan");
+const platformRouter = require("./routes/platformLaunch");
+
 app.use(bodyParser);
 app.use("/marketing-plan", marketRouter);
-// app.use("/platform-launch");
+
+app.use("/platform-launch", platformRouter);
 // app.use("/Roadmap");
 // app.use("/create-new-board");
 

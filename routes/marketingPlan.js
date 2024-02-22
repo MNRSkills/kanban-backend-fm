@@ -1,5 +1,6 @@
 const marketRouter = require("express").Router();
-const Boards = require("../models/marketing");
+const Boards = require("../models/mainModel");
+// change this to marketing collection
 
 marketRouter.get("/", async (req, res) => {
   try {
