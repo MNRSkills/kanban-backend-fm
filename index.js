@@ -21,12 +21,13 @@ mongoose.connect(uri);
 
 const marketRouter = require("./routes/marketingPlan");
 const platformRouter = require("./routes/platformLaunch");
+const roadMapRouter = require("./routes/roadMap");
 
 app.use(bodyParser);
 app.use("/marketing-plan", marketRouter);
 
 app.use("/platform-launch", platformRouter);
-// app.use("/Roadmap");
+app.use("/Roadmap", roadMapRouter);
 // app.use("/create-new-board");
 
 app.listen(PORT, () => {

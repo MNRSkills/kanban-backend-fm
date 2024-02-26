@@ -36,7 +36,7 @@ platformRouter.post("/platformLaunch-post", async (req, res) => {
           status: req.body.status,
           subtasks: [
             {
-              title: req.body.title,
+              subTitle: req.body.subTitle,
               isCompleted: req.body.isCompleted,
             },
           ],

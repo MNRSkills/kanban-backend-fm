@@ -1,5 +1,5 @@
 const marketRouter = require("express").Router();
-const Boards = require("../models/mainModel");
+const Market = require("../models/marketingPlan");
 // change this to marketing collection
 
 marketRouter.get("/", async (req, res) => {
@@ -27,26 +27,17 @@ marketRouter.post("/marketing-post", async (req, res) => {
   console.log(req.body);
   //jkjk
   try {
-    const marketPlan = await new Boards({
-      boards: [
+    const marketPlan = await new Market({
+      status_name: req.body.status_name,
+      tasks: [
         {
-          name: req.body.name,
-          column: [
+          title: req.body.title,
+          description: req.body.description,
+          status: req.body.status,
+          subTasks: [
             {
-              name: req.body.name,
-              tasks: [
-                {
-                  title: req.body.title,
-                  description: req.body.description,
-                  status: req.body.status,
-                  subtasks: [
-                    {
-                      title: req.body.title,
-                      isCompleted: req.body.isCompleted,
-                    },
-                  ],
-                },
-              ],
+              subTitle: req.body.subTitle,
+              isCompleted: req.body.isCompleted,
             },
           ],
         },

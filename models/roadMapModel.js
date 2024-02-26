@@ -2,26 +2,16 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const roadMapSchema = new Schema({
-  name: { type: String }, //Marketing,  platform launch, roadmap
-  column: [
-    {
-      name: { type: String },
-      tasks: [
-        {
-          title: { type: String },
-          description: { type: String },
-          status: { type: String },
-          subtasks: [
-            {
-              title: { type: String },
-              isCompleted: Boolean,
-            },
-          ],
-        },
-      ],
-    },
-  ],
+const subTasks = new Schema({
+  title: { type: String },
+  isCompleted: { type: Boolean },
 });
 
-module.exports = mongoose.model("kanbanDBs", roadMapSchema);
+const roadMapSchema = new Schema({
+  title: { type: String },
+  description: { type: String },
+  status: { type: String },
+  subTasks: [{ subTasks }],
+});
+
+module.exports = mongoose.model("Road Maps", roadMapSchema);

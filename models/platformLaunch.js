@@ -11,7 +11,7 @@ const launchSchema = new Schema({
       status: { type: String },
       subtasks: [
         {
-          title: { type: String },
+          subTitle: { type: String },
           isCompleted: Boolean,
         },
       ],
