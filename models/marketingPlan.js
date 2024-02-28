@@ -22,7 +22,7 @@ const tasksSchema = new Schema({
 const marketingSchema = new Schema({
   status_name: String,
   tasks: [tasksSchema],
-  taskStatus: [taskUpdateSchema],
+  task_status: [taskUpdateSchema],
 });
 
 module.exports = mongoose.model("marketing plan", marketingSchema);
