@@ -22,8 +22,10 @@ mongoose.connect(uri);
 const marketRouter = require("./routes/marketingPlan");
 const platformRouter = require("./routes/platformLaunch");
 const roadMapRouter = require("./routes/roadMap");
-
+const boardsRouter = require("./routes/boardsRouter");
 app.use(bodyParser);
+
+app.use("/boards-kanban", boardsRouter);
 app.use("/marketing-plan", marketRouter);
 
 app.use("/platform-launch", platformRouter);

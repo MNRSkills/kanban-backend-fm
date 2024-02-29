@@ -24,15 +24,14 @@ marketRouter.get("/", async (req, res) => {
 });
 
 marketRouter.post("/marketing-post", async (req, res) => {
-  console.log(req.body.tasks);
+  console.log(req.body.task_status);
   //jkjk
   try {
     const marketPlan = await new Market({
       status_name: req.body.statusname,
       tasks: req.body.tasks,
-      tasks_status: req.body.tasks_status,
+      task_status: req.body.task_status,
     });
-    await console.log(marketPlan, "ThiS IS IT");
     await marketPlan.save().then((tasking) =>
       res.status(200).json({
         msg: "Task has been uploaded!",

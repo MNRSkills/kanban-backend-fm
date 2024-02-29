@@ -24,24 +24,12 @@ platformRouter.get("/", async (req, res) => {
 });
 
 platformRouter.post("/platformLaunch-post", async (req, res) => {
-  console.log(req.body);
+  console.log(req.body.tasks);
   //jkjk
   try {
     const platformLaunch = await new Launch({
       name: req.body.name,
-      tasks: [
-        {
-          title: req.body.title,
-          description: req.body.description,
-          status: req.body.status,
-          subtasks: [
-            {
-              subTitle: req.body.subTitle,
-              isCompleted: req.body.isCompleted,
-            },
-          ],
-        },
-      ],
+      tasks: req.body.tasks,
     });
     await platformLaunch.save().then((tasking) =>
       res.status(200).json({
