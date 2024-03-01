@@ -1,20 +1,12 @@
 const boardsRouter = require("express").Router();
 const Boards = require("../models/mainModel");
 
-
-
-
-
-
-
 boardsRouter.post("/boards-post", async (req, res) => {
-  console.log(req.body);
+  console.log(req.body.boards);
   //jkjk
   try {
     const boards = await new Boards({
-      name: req.body.name,
-      tasks: req.body.tasks,
-      task_status: req.body.task_status,
+      boards: req.body.boards,
     });
     await boards.save().then((tasking) =>
       res.status(200).json({
