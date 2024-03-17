@@ -20,16 +20,19 @@ mongoose.connect(uri);
 // adding the routes to this app
 
 const marketRouter = require("./routes/marketingPlan");
-const platformRouter = require("./routes/platformLaunch");
-const roadMapRouter = require("./routes/roadMap");
+// const platformRouter = require("./routes/platformLaunch");
+// const roadMapRouter = require("./routes/roadMap");
 const boardsRouter = require("./routes/boardsRouter");
+const tasksRouter = require("./routes/tasksRouter");
 app.use(bodyParser);
 
 app.use("/boards-kanban", boardsRouter);
+app.use("/tasks", tasksRouter);
+// app.use("/billyBob", tasksRouter)
 app.use("/marketing-plan", marketRouter);
 
-app.use("/platform-launch", platformRouter);
-app.use("/Roadmap", roadMapRouter);
+// app.use("/platform-launch", platformRouter);
+// app.use("/Roadmap", roadMapRouter);
 // app.use("/create-new-board");
 
 app.listen(PORT, () => {

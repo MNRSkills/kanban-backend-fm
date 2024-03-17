@@ -10,7 +10,7 @@ const tasksSchema = new Schema({
   status: { type: String },
   subtasks: [
     {
-      subTitle: { type: String },
+      title: { type: String },
       isCompleted: Boolean,
     },
   ],
@@ -18,13 +18,12 @@ const tasksSchema = new Schema({
 const columnSchema = new Schema({
   name: String,
   tasks: [tasksSchema],
-  tasks_status: [tasksSchema]
 });
 const mainSchema = new Schema({
   boards: [
     {
       name: String,
-      column: [columnSchema],
+      columns: [columnSchema],
     },
   ],
 });
